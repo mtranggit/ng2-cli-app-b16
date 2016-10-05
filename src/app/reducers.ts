@@ -1,5 +1,6 @@
 import { ActionReducer, Action } from '@ngrx/store';
 
+/* Couner Reducers */
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
@@ -20,14 +21,18 @@ export const counterReducer: ActionReducer<number> = (state: number = 0, action:
     }
 }
 
-export const clockReducer = (state = new Date(), {type}) => {
+
+/* Clock Reducers */
+export const HOUR = 'HOUR';
+export const SECOND = 'SECOND';
+export const clockReducer: ActionReducer<Date> = (state = new Date(), {type, payload}) => {
     const date = new Date(state.getTime());
     switch (type) {
-        case 'second':
-            date.setSeconds(date.getSeconds() + 1)
+        case SECOND:
+            date.setSeconds(date.getSeconds() + payload)
             return date;
-        case 'hour':
-            date.setHours(date.getHours() + 1)
+        case HOUR:
+            date.setHours(date.getHours() + payload)
             return date;
     }
     

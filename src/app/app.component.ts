@@ -8,7 +8,7 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/scan';
 import { Subject } from 'rxjs/Subject';
 import { Store } from '@ngrx/store';
-
+import {SECOND, HOUR} from './reducers';
 
 @Component({
   selector: 'app-root',
@@ -39,12 +39,12 @@ export class AppComponent {
 
     Observable.merge(
       // Observable.interval(1000),
-      Observable.interval(1000).mapTo('second'),
+      Observable.interval(1000).mapTo({type: SECOND, payload: 5}),
       // this.click$
-      this.click$.mapTo('hour')
+      this.click$.mapTo({type: HOUR, payload: 3})
     )
-      .subscribe( (type) => {
-        store.dispatch({type});
+      .subscribe( (action) => {
+        store.dispatch(action);
       })
 
 
