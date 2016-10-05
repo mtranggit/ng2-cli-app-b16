@@ -1,17 +1,22 @@
 <h1>
   {{title}}
 </h1>
+
+<!-- a clock updates itself every one seconds but advance 5 seconds and also allow advance the number of hours depending on the input -->
 <div>
   <input #input type="number" value="0">
   <!--{{clock | async | date:'yMMMdjms'}}-->
   <clock [time]=" time | async"></clock>
   <button (click)="click$.next(input.value)">Update</button>
 </div>
+
+<!-- People with advance/recall -->
 <div (click)="person$.next(p)" *ngFor="let p of people | async">
   {{ p.name }} is in {{ p.time | date: 'jms'}}
 </div>
 <button (click)="recall$.next()">Recall</button>
 
+<!--App accounter -->
 <div>
   <app-counter></app-counter>
 </div>
