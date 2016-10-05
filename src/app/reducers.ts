@@ -32,6 +32,7 @@ export const clockReducer: ActionReducer<Date> = (state = new Date(), {type, pay
             date.setSeconds(date.getSeconds() + payload)
             return date;
         case HOUR:
+            console.log("Payload: ", payload);
             date.setHours(date.getHours() + payload)
             return date;
     }

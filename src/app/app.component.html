@@ -2,7 +2,8 @@
   {{title}}
 </h1>
   <div>
+    <input #input type="number" value="0">
     {{clock | async | date:'yMMMdjms'}}
-    <button (click)="click$.next()">Update</button>
+    <button (click)="click$.next(input.value)">Update</button>
   </div>
   <app-counter></app-counter>

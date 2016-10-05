@@ -23,8 +23,11 @@ export class AppComponent {
   /**
    *
    */
-
-  click$: Observable<any> = new Subject();
+  click$: Observable<any> = new Subject().map( (value: any) => {
+      const val = parseInt(value);
+      return {  type: HOUR, payload: val}
+  });
+  second$ = Observable.interval(1000).mapTo({type: SECOND, payload: 5});
   clock: any;
   
   constructor(public store: Store<any>) {
@@ -39,9 +42,9 @@ export class AppComponent {
 
     Observable.merge(
       // Observable.interval(1000),
-      Observable.interval(1000).mapTo({type: SECOND, payload: 5}),
+      this.second$,
       // this.click$
-      this.click$.mapTo({type: HOUR, payload: 3})
+      this.click$
     )
       .subscribe( (action) => {
         store.dispatch(action);
