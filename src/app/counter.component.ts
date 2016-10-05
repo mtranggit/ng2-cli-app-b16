@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
-import { INCREMENT, DECREMENT, RESET } from './counter';
+import { INCREMENT, DECREMENT, RESET } from './reducers';
 
 interface AppState {
   counter: number;

@@ -1,6 +1,5 @@
 import { Store, StoreModule } from '@ngrx/store';
-import { counterReducer } from './counter';
-import { clockReducer } from './reducers';
+import { clockReducer, counterReducer } from './reducers';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +17,7 @@ import { CounterComponent } from './counter.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore({ counter: counterReducer, clock: clockReducer }, { counter: 0 })
+    StoreModule.provideStore({ counter: counterReducer, clock: clockReducer }, { counter: 0, clock: new Date() })
   ],
   providers: [],
   bootstrap: [AppComponent]
